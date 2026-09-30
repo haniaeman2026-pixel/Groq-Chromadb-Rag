@@ -1,0 +1,139 @@
+CYBERSECURITY, INFORMATION SECURITY, AND MODERN THREAT MANAGEMENT
+
+Introduction
+
+Cybersecurity is the discipline of protecting computer systems, networks, applications, devices, and digital information from unauthorized access, misuse, disruption, modification, and destruction.
+
+As organizations increasingly depend on digital infrastructure, cybersecurity has become an essential component of software development, business operations, government services, financial systems, healthcare infrastructure, and communication networks.
+
+The CIA Triad
+
+The CIA triad represents three fundamental objectives of information security: confidentiality, integrity, and availability.
+
+Confidentiality means that information should only be accessible to authorized individuals or systems.
+
+Integrity means that information should remain accurate, complete, and protected against unauthorized modification.
+
+Availability means that authorized users should be able to access systems and information when required.
+
+These three principles provide a foundational framework for designing security controls.
+
+Authentication
+
+Authentication is the process of verifying the identity of a user, device, or service.
+
+Traditional authentication often relies on usernames and passwords. However, passwords can be compromised through phishing, credential theft, brute-force attacks, password reuse, or data breaches.
+
+Multi-factor authentication improves security by requiring multiple categories of evidence.
+
+These factors may include something the user knows, something the user possesses, or something the user is.
+
+Authorization
+
+Authorization determines what an authenticated user is permitted to access.
+
+Authentication and authorization are different processes. Authentication verifies identity, while authorization determines permissions.
+
+Role-based access control assigns permissions based on organizational roles.
+
+The principle of least privilege recommends giving users and services only the permissions necessary to perform their required tasks.
+
+Encryption
+
+Encryption transforms readable information into an encoded representation.
+
+Symmetric encryption uses the same key for encryption and decryption.
+
+Asymmetric encryption uses a pair of mathematically related keys. One key can be used for encryption or verification while another is used for decryption or signing.
+
+Encryption is commonly used to protect data stored on devices and data transmitted across networks.
+
+Hashing
+
+Hashing converts data into a fixed-length value using a mathematical function.
+
+Cryptographic hashes are designed to make it computationally difficult to recover the original input from the hash.
+
+Hashing is commonly used for integrity verification and password storage systems.
+
+Passwords should generally be protected using appropriate password hashing algorithms with salts rather than storing plaintext passwords.
+
+Phishing and Social Engineering
+
+Social engineering attacks target human behavior rather than exclusively targeting technical vulnerabilities.
+
+Phishing is a common example. An attacker may create a deceptive message designed to convince a user to reveal credentials, open a malicious attachment, or visit a fraudulent website.
+
+Security awareness training can help users identify suspicious communications.
+
+Malware
+
+Malware is malicious software designed to perform unauthorized or harmful actions.
+
+Examples include viruses, worms, trojans, ransomware, and spyware.
+
+Ransomware can prevent users from accessing systems or data and may be used to demand payment.
+
+Defensive measures include secure backups, software updates, endpoint protection, network segmentation, access controls, and security monitoring.
+
+Network Security
+
+Network security protects communication infrastructure and connected systems.
+
+Firewalls can control network traffic based on defined security policies.
+
+Intrusion detection systems monitor network or system activity for potentially suspicious behavior.
+
+Intrusion prevention systems can take automated actions to block certain detected threats.
+
+Network segmentation can limit the ability of an attacker to move between different parts of an environment.
+
+Application Security
+
+Application security focuses on identifying and reducing vulnerabilities in software.
+
+Secure development practices include input validation, secure authentication, authorization checks, secure session management, dependency management, logging, and security testing.
+
+Developers should avoid trusting user-controlled input without validation.
+
+Software dependencies should also be monitored because vulnerabilities in third-party libraries can affect applications that depend on them.
+
+Security Monitoring
+
+Security monitoring involves collecting and analyzing information about system activity.
+
+Logs can contain authentication events, network activity, application errors, configuration changes, and other security-relevant information.
+
+Security Information and Event Management systems can aggregate logs from multiple sources and help security teams identify suspicious activity.
+
+Incident Response
+
+Incident response is the structured process of handling security incidents.
+
+A typical incident response lifecycle includes preparation, detection, analysis, containment, eradication, recovery, and lessons learned.
+
+Preparation involves establishing policies, tools, procedures, and responsibilities before an incident occurs.
+
+Detection identifies potentially malicious activity.
+
+Containment attempts to limit the impact of an incident.
+
+Recovery focuses on restoring normal operations.
+
+Risk Management
+
+Cybersecurity risk management involves identifying threats and vulnerabilities, evaluating potential impacts, and implementing appropriate controls.
+
+Organizations cannot eliminate every possible risk. Instead, they must prioritize risks based on factors such as likelihood, potential impact, business importance, and available resources.
+
+Security Best Practices
+
+Organizations should maintain updated software, use strong authentication, protect sensitive information, implement access controls, maintain secure backups, monitor systems, train users, and regularly evaluate security controls.
+
+Security should be considered throughout the software development lifecycle rather than added only after an application has been completed.
+
+Conclusion
+
+Cybersecurity requires a combination of technology, processes, and human awareness.
+
+Effective security programs use layered defenses rather than relying on a single security mechanism. Authentication, authorization, encryption, monitoring, secure software development, backups, incident response, and user education all contribute to reducing cybersecurity risk.

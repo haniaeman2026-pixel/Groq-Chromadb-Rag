@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Grow from Embeddings — a production-ready semantic search and RAG workspace."
+    >
+
+    <title>Grow from Embeddings</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-symbol">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="brand-copy">
+                <h1>GrowMind</h1>
+                <p>Embeddings Intelligence</p>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <p class="nav-label">WORKSPACE</p>
+
+            <button class="nav-item active" data-page="home">
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </button>
+
+            <button class="nav-item" data-page="chat">
+                <span class="nav-icon">◌</span>
+                <span>Chat</span>
+            </button>
+
+            <button class="nav-item" data-page="embeddings">
+                <span class="nav-icon">◎</span>
+                <span>Embeddings</span>
+            </button>
+
+            <p class="nav-label nav-label-spaced">KNOWLEDGE</p>
+
+            <button class="nav-item" data-page="documents">
+                <span class="nav-icon">▤</span>
+                <span>Documents</span>
+            </button>
+
+            <button class="nav-item" data-page="settings">
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-info">
+                <div class="info-icon">✦</div>
+
+                <div>
+                    <strong>Smart by design</strong>
+                    <p>
+                        Semantic retrieval finds relevant knowledge
+                        before the AI responds.
+                    </p>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <span class="online-dot"></span>
+                Local RAG Workspace
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="breadcrumb">
+                <span id="pageBreadcrumb">Workspace</span>
+                <span class="breadcrumb-dot">•</span>
+                <strong id="pageTitle">Home</strong>
+            </div>
+
+            <div class="top-actions">
+
+                <a
+                    class="docs-link"
+                    href="/docs"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    API Docs
+                    <span>↗</span>
+                </a>
+
+                <div class="connection-pill">
+                    <span id="topStatusDot"></span>
+                    <span id="topStatusText">Checking</span>
+                </div>
+
+                <div class="avatar">G</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             HOME PAGE
+        ====================================================== -->
+        <section id="page-home" class="page active-page">
+
+            <section class="hero">
+
+                <div class="hero-background-art">
+                    <div class="sun"></div>
+                    <div class="hill hill-one"></div>
+                    <div class="hill hill-two"></div>
+                    <div class="leaf leaf-one"></div>
+                    <div class="leaf leaf-two"></div>
+                    <div class="leaf leaf-three"></div>
+                </div>
+
+                <div class="hero-content">
+
+                    <span class="eyebrow">WELCOME TO YOUR KNOWLEDGE WORKSPACE</span>
+
+                    <h2>
+                        Grow from
+                        <span>Embeddings</span>
+                    </h2>
+
+                    <p>
+                        Transform your documents into meaningful knowledge
+                        with semantic embeddings, intelligent retrieval,
+                        and grounded AI answers.
+                    </p>
+
+                    <button
+                        class="primary-button hero-button"
+                        data-go-page="chat"
+                    >
+                        Start exploring
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- HOME GRID -->
+            <div class="home-grid">
+
+                <!-- SYSTEM STATUS -->
+                <section class="panel system-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-kicker">SYSTEM</span>
+                            <h3>System Status</h3>
+                        </div>
+
+                        <span class="soft-badge" id="systemBadge">
+                            Checking
+                        </span>
+                    </div>
+
+                    <div class="system-status-main">
+
+                        <span
+                            id="statusDot"
+                            class="large-status-dot checking"
+                        ></span>
+
+                        <div>
+                            <strong id="statusText">
+                                Checking system
+                            </strong>
+
+                            <p id="statusSubtext">
+                                Connecting to FastAPI
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="status-list">
+
+                        <div class="status-row">
+                            <div>
+                                <span class="status-icon">◎</span>
+                                Embedding Engine
+                            </div>
+
+                            <span class="status-value" id="embeddingStatus">
+                                Checking
+                            </span>
+                        </div>
+
+                        <div class="status-row">
+                            <div>
+                                <span class="status-icon">◉</span>
+                                Vector Database
+                            </div>
+
+                            <span class="status-value" id="databaseStatus">
+                                Checking
+                            </span>
+                        </div>
+
+                        <div class="status-row">
+                            <div>
+                                <span class="status-icon">⌁</span>
+                                API Service
+                            </div>
+
+                            <span class="status-value" id="apiServiceStatus">
+                                Checking
+                            </span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- INDEXED KNOWLEDGE -->
+                <section class="panel indexed-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-kicker">KNOWLEDGE BASE</span>
+                            <h3>Indexed Knowledge</h3>
+                        </div>
+
+                        <span class="mini-icon">◎</span>
+
+                    </div>
+
+                    <div class="big-number" id="chunkCount">
+                        —
+                    </div>
+
+                    <p class="metric-description">
+                        document chunks currently available
+                        in your ChromaDB knowledge base.
+                    </p>
+
+                    <button
+                        class="text-button"
+                        data-go-page="embeddings"
+                    >
+                        Explore embeddings
+                        <span>→</span>
+                    </button>
+
+                </section>
+
+            </div>
+
+
+            <!-- FEATURE CARDS -->
+            <section class="features-section">
+
+                <div class="section-title">
+                    <div>
+                        <span class="panel-kicker">CORE CAPABILITIES</span>
+                        <h3>Everything you need to work with knowledge</h3>
+                    </div>
+                </div>
+
+
+                <div class="feature-grid">
+
+                    <button
+                        class="feature-card"
+                        data-go-page="chat"
+                    >
+                        <div class="feature-icon sage-icon">
+                            ◌
+                        </div>
+
+                        <h4>Semantic Chat</h4>
+
+                        <p>
+                            Ask questions and receive grounded
+                            answers based on your indexed knowledge.
+                        </p>
+
+                        <span class="feature-link">
+                            Open Chat →
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="feature-card"
+                        data-go-page="embeddings"
+                    >
+                        <div class="feature-icon sand-icon">
+                            ◎
+                        </div>
+
+                        <h4>Embeddings</h4>
+
+                        <p>
+                            Understand how your knowledge is converted
+                            into searchable semantic representations.
+                        </p>
+
+                        <span class="feature-link">
+                            View Embeddings →
+                        </span>
+                    </button>
+
+
+                    <button
+                        class="feature-card"
+                        data-go-page="documents"
+                    >
+                        <div class="feature-icon olive-icon">
+                            ▤
+                        </div>
+
+                        <h4>Documents</h4>
+
+                        <p>
+                            Explore your indexed document sources
+                            and the context retrieved for each query.
+                        </p>
+
+                        <span class="feature-link">
+                            Explore Documents →
+                        </span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- BOTTOM CTA -->
+            <section class="bottom-cta">
+
+                <div class="cta-symbol">✦</div>
+
+                <div>
+                    <span class="panel-kicker">READY WHEN YOU ARE</span>
+
+                    <h3>
+                        Search smarter. Understand deeper.
+                    </h3>
+
+                    <p>
+                        Start a conversation with your knowledge base
+                        and discover information through semantic retrieval.
+                    </p>
+                </div>
+
+                <button
+                    class="primary-button"
+                    data-go-page="chat"
+                >
+                    Start Chat
+                    <span>→</span>
+                </button>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================================
+             CHAT PAGE
+        ====================================================== -->
+        <section id="page-chat" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">SEMANTIC KNOWLEDGE SEARCH</span>
+
+                    <h2>Chat with your knowledge</h2>
+
+                    <p>
+                        Ask questions about your indexed documents
+                        and receive grounded AI responses.
+                    </p>
+                </div>
+
+                <div class="page-heading-icon">
+                    ◌
+                </div>
+
+            </div>
+
+
+            <section class="chat-layout">
+
+                <div class="chat-main panel">
+
+                    <div class="chat-header">
+                        <div>
+                            <span class="panel-kicker">RAG ASSISTANT</span>
+                            <h3>Ask anything</h3>
+                        </div>
+
+                        <span class="soft-badge">
+                            Grounded AI
+                        </span>
+                    </div>
+
+
+                    <div class="prompt-row">
+
+                        <button
+                            class="prompt-chip"
+                            data-prompt="What is the main purpose of these documents?"
+                        >
+                            Main purpose
+                        </button>
+
+                        <button
+                            class="prompt-chip"
+                            data-prompt="Summarize the most important information in the documents."
+                        >
+                            Summarize
+                        </button>
+
+                        <button
+                            class="prompt-chip"
+                            data-prompt="What key facts or recommendations should I know?"
+                        >
+                            Key facts
+                        </button>
+
+                    </div>
+
+
+                    <div class="textarea-wrap">
+
+                        <textarea
+                            id="question"
+                            maxlength="2000"
+                            placeholder="Ask a question about your knowledge base..."
+                            spellcheck="true"
+                        ></textarea>
+
+                        <div class="textarea-meta">
+                            <span id="charCount">0 / 2000</span>
+                            <span>Ctrl + Enter to submit</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="query-footer">
+
+                        <div class="grounded-note">
+                            <span></span>
+                            Answers are grounded in retrieved context
+                        </div>
+
+                        <button
+                            id="askButton"
+                            class="primary-button ask-button"
+                            type="button"
+                        >
+                            <span
+                                id="loader"
+                                class="button-loader"
+                            ></span>
+
+                            <span id="buttonText">
+                                Ask Question
+                            </span>
+
+                            <span>→</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <aside class="chat-side">
+
+                    <div class="panel compact-panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="panel-kicker">
+                                    RETRIEVAL
+                                </span>
+
+                                <h3>Search settings</h3>
+                            </div>
+                        </div>
+
+                        <label class="input-field">
+
+                            <span>
+                                Top K
+                                <small>1–50</small>
+                            </span>
+
+                            <input
+                                id="topK"
+                                type="number"
+                                min="1"
+                                max="50"
+                                value="5"
+                            >
+
+                            <em>
+                                Number of relevant chunks to retrieve.
+                            </em>
+
+                        </label>
+
+
+                        <label class="input-field">
+
+                            <span>
+                                Source filter
+                                <small>Optional</small>
+                            </span>
+
+                            <input
+                                id="source"
+                                type="text"
+                                placeholder="sample.txt"
+                            >
+
+                            <em>
+                                Filter retrieval by document filename.
+                            </em>
+
+                        </label>
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+
+            <!-- ERROR -->
+            <section
+                id="errorBox"
+                class="error-card"
+                aria-live="polite"
+                hidden
+            >
+                <div class="error-icon">!</div>
+
+                <div>
+                    <strong>Request could not be completed</strong>
+                    <p id="errorMessage"></p>
+                </div>
+
+                <button
+                    id="closeError"
+                    type="button"
+                    aria-label="Close error"
+                >
+                    ×
+                </button>
+            </section>
+
+
+            <!-- ANSWER -->
+            <section class="result-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="panel-kicker">
+                            AI RESPONSE
+                        </span>
+
+                        <h3>Answer</h3>
+                    </div>
+
+                    <span
+                        id="resultBadge"
+                        class="soft-badge"
+                    >
+                        Ready
+                    </span>
+
+                </div>
+
+                <article class="answer-card">
+
+                    <div class="answer-icon">
+                        ✦
+                    </div>
+
+                    <div
+                        id="answer"
+                        class="answer-text"
+                    >
+                        Ask a question to get a grounded answer
+                        from your indexed documents.
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- SOURCES -->
+            <section class="result-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="panel-kicker">
+                            RETRIEVED CONTEXT
+                        </span>
+
+                        <h3>
+                            Sources
+                            <span
+                                id="sourceCount"
+                                class="source-count"
+                            >
+                                (0)
+                            </span>
+                        </h3>
+                    </div>
+
+                    <span class="soft-badge">
+                        ChromaDB
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="sources"
+                    class="sources-card"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">◇</div>
+
+                        <strong>
+                            No retrieved sources yet
+                        </strong>
+
+                        <p>
+                            Ask a question to see the relevant
+                            document context returned by ChromaDB.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================================
+             EMBEDDINGS PAGE
+        ====================================================== -->
+        <section id="page-embeddings" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">VECTOR INTELLIGENCE</span>
+
+                    <h2>Embeddings workspace</h2>
+
+                    <p>
+                        Your documents are transformed into semantic
+                        representations that make intelligent retrieval possible.
+                    </p>
+                </div>
+
+                <div class="page-heading-icon">
+                    ◎
+                </div>
+
+            </div>
+
+
+            <div class="embedding-grid">
+
+                <section class="panel embedding-overview">
+
+                    <span class="panel-kicker">
+                        VECTOR STORE
+                    </span>
+
+                    <h3>Semantic knowledge layer</h3>
+
+                    <p>
+                        ChromaDB stores vector representations of your
+                        document chunks. When you ask a question, the
+                        system searches this semantic space for relevant context.
+                    </p>
+
+                    <div class="embedding-flow">
+
+                        <div>
+                            <span>01</span>
+                            <strong>Documents</strong>
+                            <small>Your knowledge</small>
+                        </div>
+
+                        <b>→</b>
+
+                        <div>
+                            <span>02</span>
+                            <strong>Embeddings</strong>
+                            <small>Semantic vectors</small>
+                        </div>
+
+                        <b>→</b>
+
+                        <div>
+                            <span>03</span>
+                            <strong>Retrieval</strong>
+                            <small>Relevant context</small>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="panel vector-stat">
+
+                    <div class="feature-icon sage-icon">
+                        ◎
+                    </div>
+
+                    <span class="panel-kicker">
+                        INDEXED CHUNKS
+                    </span>
+
+                    <div
+                        id="embeddingChunkCount"
+                        class="big-number"
+                    >
+                        —
+                    </div>
+
+                    <p>
+                        semantic chunks available
+                        in the vector database
+                    </p>
+
+                </section>
+
+            </div>
+
+
+            <section class="panel architecture-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            HOW IT WORKS
+                        </span>
+
+                        <h3>
+                            From text to intelligent answers
+                        </h3>
+                    </div>
+
+                </div>
+
+
+                <div class="architecture-grid">
+
+                    <div class="architecture-card">
+                        <span>01</span>
+                        <h4>Chunk</h4>
+                        <p>
+                            Documents are divided into meaningful
+                            pieces for efficient retrieval.
+                        </p>
+                    </div>
+
+                    <div class="architecture-card">
+                        <span>02</span>
+                        <h4>Embed</h4>
+                        <p>
+                            Each piece is converted into a
+                            semantic vector representation.
+                        </p>
+                    </div>
+
+                    <div class="architecture-card">
+                        <span>03</span>
+                        <h4>Store</h4>
+                        <p>
+                            Vectors and metadata are stored
+                            inside ChromaDB.
+                        </p>
+                    </div>
+
+                    <div class="architecture-card">
+                        <span>04</span>
+                        <h4>Retrieve</h4>
+                        <p>
+                            Relevant context is retrieved
+                            before the AI generates an answer.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================================
+             DOCUMENTS PAGE
+        ====================================================== -->
+        <section id="page-documents" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">KNOWLEDGE BASE</span>
+
+                    <h2>Documents</h2>
+
+                    <p>
+                        Explore document sources returned from your
+                        semantic retrieval pipeline.
+                    </p>
+                </div>
+
+                <div class="page-heading-icon">
+                    ▤
+                </div>
+
+            </div>
+
+
+            <section class="panel documents-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="panel-kicker">
+                            INDEXED KNOWLEDGE
+                        </span>
+
+                        <h3>
+                            Retrieved document sources
+                        </h3>
+                    </div>
+
+                    <span
+                        id="documentCountBadge"
+                        class="soft-badge"
+                    >
+                        0 sources
+                    </span>
+
+                </div>
+
+
+                <div id="documentList" class="document-list">
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">▤</div>
+
+                        <strong>
+                            Documents will appear here
+                        </strong>
+
+                        <p>
+                            Ask a question in Chat and the sources
+                            retrieved from ChromaDB will appear here.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================================
+             SETTINGS PAGE
+        ====================================================== -->
+        <section id="page-settings" class="page">
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">WORKSPACE CONFIGURATION</span>
+
+                    <h2>Settings</h2>
+
+                    <p>
+                        View the current runtime configuration
+                        of your RAG workspace.
+                    </p>
+                </div>
+
+                <div class="page-heading-icon">
+                    ⚙
+                </div>
+
+            </div>
+
+
+            <div class="settings-grid">
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-kicker">
+                                CONNECTION
+                            </span>
+
+                            <h3>System connection</h3>
+                        </div>
+                    </div>
+
+                    <div class="settings-row">
+                        <span>FastAPI service</span>
+                        <strong id="settingsApiStatus">
+                            Checking
+                        </strong>
+                    </div>
+
+                    <div class="settings-row">
+                        <span>Vector database</span>
+                        <strong id="settingsDbStatus">
+                            Checking
+                        </strong>
+                    </div>
+
+                    <div class="settings-row">
+                        <span>Indexed chunks</span>
+                        <strong id="settingsChunkCount">
+                            —
+                        </strong>
+                    </div>
+
+                </section>
+
+
+                <section class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-kicker">
+                                PIPELINE
+                            </span>
+
+                            <h3>RAG architecture</h3>
+                        </div>
+                    </div>
+
+                    <div class="settings-list">
+
+                        <div>
+                            <span>01</span>
+                            Local Embeddings
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            ChromaDB Retrieval
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            Groq Generation
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+
+            <span>
+                GrowMind — Embeddings Intelligence
+            </span>
+
+            <span>
+                Semantic Search · Grounded Knowledge · AI
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
